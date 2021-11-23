@@ -8,5 +8,14 @@ class Animal(models.Model):
     height = models.PositiveIntegerField()
     speed = models.PositiveIntegerField()
     family = models.ForeignKey('family.Family', on_delete=models.CASCADE)
+    favorite_foods = models.ManyToManyField('Food')
+
+    def __str__(self):
+        return self.name
 
 
+class Food(models.Model):
+    name = models.CharField(max_length=40)
+
+    def __str__(self):
+        return self.name
